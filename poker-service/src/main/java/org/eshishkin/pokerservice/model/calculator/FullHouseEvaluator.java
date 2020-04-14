@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 import org.eshishkin.pokerservice.model.Card;
 import org.eshishkin.pokerservice.model.Card.CardValue;
-import org.eshishkin.pokerservice.model.Hand;
 
 class FullHouseEvaluator extends AbstractHandEvaluator {
 

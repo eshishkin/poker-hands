@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 import org.eshishkin.pokerservice.model.Card;
-import org.eshishkin.pokerservice.model.Hand;
+import org.eshishkin.pokerservice.model.calculator.Hand;
 
 public class DefaultPokerHandComparator implements Comparator<Hand>, Serializable {
 

@@ -3,7 +3,6 @@ package org.eshishkin.pokerservice.model.calculator;
 import java.util.List;
 import java.util.stream.Stream;
 import org.eshishkin.pokerservice.model.Card;
-import org.eshishkin.pokerservice.model.Hand;
 
 class HighCardEvaluator extends AbstractHandEvaluator {
 

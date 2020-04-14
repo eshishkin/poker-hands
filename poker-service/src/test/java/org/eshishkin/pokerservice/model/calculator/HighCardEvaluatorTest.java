@@ -1,6 +1,5 @@
 package org.eshishkin.pokerservice.model.calculator;
 
-import org.eshishkin.pokerservice.model.Hand;
 import org.junit.jupiter.api.Test;
 import static java.util.Arrays.asList;
 import static org.eshishkin.pokerservice.model.Card.CLUB_KING;
@@ -10,7 +9,7 @@ import static org.eshishkin.pokerservice.model.Card.DIAMOND_FOUR;
 import static org.eshishkin.pokerservice.model.Card.DIAMOND_SIX;
 import static org.eshishkin.pokerservice.model.Card.DIAMOND_TEN;
 import static org.eshishkin.pokerservice.model.Card.HEART_QUEEN;
-import static org.eshishkin.pokerservice.model.Hand.Rank.HIGH_CARD;
+import static org.eshishkin.pokerservice.model.calculator.Hand.Rank.HIGH_CARD;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HighCardEvaluatorTest {

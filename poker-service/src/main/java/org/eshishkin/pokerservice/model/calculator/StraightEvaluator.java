@@ -7,7 +7,6 @@ import java.util.function.IntPredicate;
 import java.util.stream.Stream;
 import org.eshishkin.pokerservice.model.Card;
 import org.eshishkin.pokerservice.model.Card.CardValue;
-import org.eshishkin.pokerservice.model.Hand;
 import static java.util.Arrays.asList;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;

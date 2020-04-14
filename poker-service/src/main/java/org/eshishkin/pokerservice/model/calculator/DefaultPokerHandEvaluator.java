@@ -3,7 +3,6 @@ package org.eshishkin.pokerservice.model.calculator;
 import java.util.Arrays;
 import java.util.List;
 import org.eshishkin.pokerservice.model.Card;
-import org.eshishkin.pokerservice.model.Hand;
 
 public class DefaultPokerHandEvaluator  implements HandEvaluator {
     private static final List<HandEvaluator> EVALUATORS = Arrays.asList(

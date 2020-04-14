@@ -1,6 +1,5 @@
 package org.eshishkin.pokerservice.model.calculator;
 
-import org.eshishkin.pokerservice.model.Hand;
 import org.junit.jupiter.api.Test;
 import static java.util.Arrays.asList;
 import static org.eshishkin.pokerservice.model.Card.CLUB_EIGHT;
@@ -18,9 +17,9 @@ import static org.eshishkin.pokerservice.model.Card.HEART_ACE;
 import static org.eshishkin.pokerservice.model.Card.HEART_EIGHT;
 import static org.eshishkin.pokerservice.model.Card.HEART_FIVE;
 import static org.eshishkin.pokerservice.model.Card.HEART_QUEEN;
-import static org.eshishkin.pokerservice.model.Hand.Rank.FULL_HOUSE;
-import static org.eshishkin.pokerservice.model.Hand.Rank.STRAIGHT;
-import static org.eshishkin.pokerservice.model.Hand.Rank.THREE_OF_KIND;
+import static org.eshishkin.pokerservice.model.calculator.Hand.Rank.FULL_HOUSE;
+import static org.eshishkin.pokerservice.model.calculator.Hand.Rank.STRAIGHT;
+import static org.eshishkin.pokerservice.model.calculator.Hand.Rank.THREE_OF_KIND;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DefaultPokerHandEvaluatorTest {

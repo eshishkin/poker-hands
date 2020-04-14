@@ -1,7 +1,8 @@
-package org.eshishkin.pokerservice.model;
+package org.eshishkin.pokerservice.model.calculator;
 
 import java.util.Collections;
 import java.util.List;
+import org.eshishkin.pokerservice.model.Card;
 
 public class Hand {
 
@@ -13,31 +14,31 @@ public class Hand {
         this.cards = cards;
     }
 
-    public static Hand straightFlush(List<Card> cards) {
+    static Hand straightFlush(List<Card> cards) {
         return new Hand(Rank.STRAIGHT_FLUSH, cards);
     }
 
-    public static Hand fourOfKind(List<Card> cards) {
+    static Hand fourOfKind(List<Card> cards) {
         return new Hand(Rank.FOUR_OF_KIND, cards);
     }
 
-    public static Hand fullHouse(List<Card> cards) {
+    static Hand fullHouse(List<Card> cards) {
         return new Hand(Rank.FULL_HOUSE, cards);
     }
 
-    public static Hand flush(List<Card> cards) {
+    static Hand flush(List<Card> cards) {
         return new Hand(Rank.FLUSH, cards);
     }
 
-    public static Hand straight(List<Card> cards) {
+    static Hand straight(List<Card> cards) {
         return new Hand(Rank.STRAIGHT, cards);
     }
 
-    public static Hand threeOfKind(List<Card> cards) {
+    static Hand threeOfKind(List<Card> cards) {
         return new Hand(Rank.THREE_OF_KIND, cards);
     }
 
-    public static Hand twoPairs(List<Card> cards) {
+    static Hand twoPairs(List<Card> cards) {
         return new Hand(Rank.TWO_PAIRS, cards);
     }
 
