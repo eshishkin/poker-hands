@@ -1,42 +1,15 @@
 package org.eshishkin.pokerservice.model.comparator;
 
-import java.util.Collections;
+import java.io.Serializable;
 import java.util.Comparator;
-import java.util.EnumMap;
-import java.util.Map;
+import java.util.List;
+import org.eshishkin.pokerservice.model.Card;
 import org.eshishkin.pokerservice.model.Hand;
-import static org.eshishkin.pokerservice.model.Hand.Rank.FLUSH;
-import static org.eshishkin.pokerservice.model.Hand.Rank.FOUR_OF_KIND;
-import static org.eshishkin.pokerservice.model.Hand.Rank.FULL_HOUSE;
-import static org.eshishkin.pokerservice.model.Hand.Rank.HIGH_CARD;
-import static org.eshishkin.pokerservice.model.Hand.Rank.ONE_PAIR;
-import static org.eshishkin.pokerservice.model.Hand.Rank.STRAIGHT;
-import static org.eshishkin.pokerservice.model.Hand.Rank.STRAIGHT_FLUSH;
-import static org.eshishkin.pokerservice.model.Hand.Rank.THREE_OF_KIND;
-import static org.eshishkin.pokerservice.model.Hand.Rank.TWO_PAIRS;
 
-public class DefaultPokerHandComparator implements HandComparator {
-    private static final Comparator<Hand> BY_RANK_COMPARATOR =
-            Comparator.comparing(Hand::getRank);
+public class DefaultPokerHandComparator implements Comparator<Hand>, Serializable {
 
-    private static final Map<Hand.Rank, HandComparator> HAND_COMPARATORS;
-
-    static {
-        Map<Hand.Rank, HandComparator> map = new EnumMap<>(Hand.Rank.class);
-
-        map.put(STRAIGHT_FLUSH, new StraightComparator());
-        map.put(FOUR_OF_KIND, new FourOfKindComparator());
-        map.put(FULL_HOUSE, new FullHouseComparator());
-        map.put(FLUSH, new FlushComparator());
-        map.put(STRAIGHT, new StraightComparator());
-        map.put(THREE_OF_KIND, new ThreeOfKindComparator());
-        map.put(TWO_PAIRS, new TwoPairsComparator());
-        map.put(ONE_PAIR, new OnePairComparator());
-        map.put(HIGH_CARD, new HighCardComparator());
-
-
-        HAND_COMPARATORS = Collections.unmodifiableMap(map);
-    }
+    private static final Comparator<Hand> BY_RANK_COMPARATOR =Comparator.comparing(Hand::getRank);
+    private static final Comparator<Hand> BY_VALUE_COMPARATOR = new ValueComparator();
 
     @Override
     public int compare(Hand o1, Hand o2) {
@@ -48,8 +21,32 @@ public class DefaultPokerHandComparator implements HandComparator {
             throw new NullPointerException("second argument is null");
         }
 
-        return BY_RANK_COMPARATOR
-                .thenComparing(HAND_COMPARATORS.get(o1.getRank()))
-                .compare(o1, o2);
+        return BY_RANK_COMPARATOR.thenComparing(BY_VALUE_COMPARATOR).compare(o1, o2);
+
+    }
+
+    private static class ValueComparator implements Comparator<Hand>, Serializable {
+        @Override
+        public int compare(Hand o1, Hand o2) {
+            List<Card> first = o1.getCards();
+            List<Card> second = o2.getCards();
+
+            if (first.size() != second.size()) {
+                throw new IllegalArgumentException("Collections have different size");
+
+            }
+
+            int result = 0;
+
+            for (int i = 0; i < first.size(); i++) {
+                if (result != 0) {
+                    break;
+                }
+                Card.CardValue value = first.get(i).getValue();
+                Card.CardValue value2 = second.get(i).getValue();
+                result = value.compareTo(value2);
+            }
+            return result;
+        }
     }
 }
